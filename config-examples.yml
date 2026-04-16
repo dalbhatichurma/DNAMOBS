@@ -1,0 +1,208 @@
+# DNAMobs - Example Configuration
+# This file shows advanced configuration examples
+# Copy sections to your config.yml as needed
+
+# ============================================
+# EXAMPLE 1: Hardcore Survival Server
+# ============================================
+hardcore-example:
+  evolution:
+    kills-per-tier: 25  # Fast evolution
+    elite-mutation-chance: 0.15  # 15% elite chance
+    max-tier: 4
+  
+  resistance:
+    tier-4: 60  # Very high resistance
+  
+  elite:
+    health-multiplier: 3.0  # Triple health
+    damage-multiplier: 2.0  # Double damage
+
+# ============================================
+# EXAMPLE 2: Casual/Friendly Server
+# ============================================
+casual-example:
+  evolution:
+    kills-per-tier: 150  # Slow evolution
+    elite-mutation-chance: 0.02  # Rare elites
+    max-tier: 3  # No tier 4
+  
+  resistance:
+    tier-3: 20  # Lower resistance
+  
+  elite:
+    health-multiplier: 1.5
+    damage-multiplier: 1.2
+
+# ============================================
+# EXAMPLE 3: PvE Event Server
+# ============================================
+event-example:
+  evolution:
+    kills-per-tier: 10  # Very fast
+    elite-mutation-chance: 0.25  # Many elites
+    max-tier: 4
+  
+  elite:
+    name-format: "&c&l⚡ &4EVENT BOSS &c&l⚡"
+    rewards:
+      exp-multiplier: 5.0  # 5x experience
+
+# ============================================
+# EXAMPLE 4: Zombie-Only Evolution
+# ============================================
+zombie-only-example:
+  mobs:
+    zombie:
+      enabled: true
+      evolution-enabled: true
+    skeleton:
+      enabled: false
+    creeper:
+      enabled: false
+    spider:
+      enabled: false
+    enderman:
+      enabled: false
+
+# ============================================
+# EXAMPLE 5: Custom Elite Names
+# ============================================
+custom-names:
+  elite:
+    name-format: "&6&l⭐ &e&lLEGENDARY %mob% &6&l⭐"
+    # Other options:
+    # "&4&l[BOSS] &c%mob%"
+    # "&b&l✦ &3Elite %mob% &b&l✦"
+    # "&5&l♛ %mob% King &5&l♛"
+
+# ============================================
+# EXAMPLE 6: Particle Effects
+# ============================================
+particle-examples:
+  elite:
+    particles:
+      enabled: true
+      # Options: FLAME, SOUL_FIRE_FLAME, DRAGON_BREATH, 
+      #          ENCHANTMENT_TABLE, PORTAL, END_ROD,
+      #          REDSTONE, SPELL_WITCH, VILLAGER_HAPPY
+      type: DRAGON_BREATH
+      count: 5
+
+# ============================================
+# EXAMPLE 7: Performance Optimization
+# ============================================
+performance-optimized:
+  performance:
+    async-saving: true
+    max-tracked-per-chunk: 30
+    cache-size: 500
+    ability-update-interval: 40  # Update less frequently
+  
+  general:
+    save-interval: 12000  # Save every 10 minutes instead of 5
+
+# ============================================
+# EXAMPLE 8: Balanced PvP Server
+# ============================================
+pvp-balanced:
+  evolution:
+    kills-per-tier: 75
+    elite-mutation-chance: 0.05
+    max-tier: 3  # Limit to tier 3
+  
+  resistance:
+    tier-2: 10
+    tier-3: 20
+    # No tier 4
+  
+  mobs:
+    zombie:
+      tier-3:
+        break-blocks: false  # Don't break blocks
+        health-boost: 8.0  # Moderate boost
+    creeper:
+      tier-3:
+        explosion-power: 1.2  # Slight increase only
+
+# ============================================
+# EXAMPLE 9: Testing Configuration
+# ============================================
+testing:
+  general:
+    debug: true  # Enable debug messages
+  
+  evolution:
+    kills-per-tier: 3  # Evolve after just 3 kills
+    elite-mutation-chance: 0.5  # 50% elite chance
+  
+  performance:
+    ability-update-interval: 5  # Update frequently for testing
+
+# ============================================
+# EXAMPLE 10: Custom Messages
+# ============================================
+custom-messages:
+  messages:
+    prefix: "&8[&6DNA&e⚡&8] &7"
+    elite-spawn: "&c&l⚠ &6An elite %mob% has spawned nearby! &c&l⚠"
+    stats-header: "&6&l═══════ &e&lEVOLUTION DATA &6&l═══════"
+    stats-format: "&e%mob% &8│ &7Tier &b%tier% &8│ &7%kills% kills"
+
+# ============================================
+# TIPS FOR CONFIGURATION
+# ============================================
+
+# 1. Start with default settings
+# 2. Adjust kills-per-tier based on server activity
+# 3. Test elite-mutation-chance (0.05 = 5% is balanced)
+# 4. Monitor performance with debug mode
+# 5. Backup data.yml before major changes
+# 6. Use /dna reload after config changes
+# 7. Reset data with /dna reset for fresh start
+
+# ============================================
+# RESISTANCE CALCULATION
+# ============================================
+
+# If a mob has 30% resistance to melee:
+# - 10 damage becomes 7 damage (30% reduction)
+# - 20 damage becomes 14 damage
+# 
+# Resistance applies only to the dominant damage type
+# Example: If 70% of kills are melee, mob gets melee resistance
+
+# ============================================
+# EVOLUTION TIMELINE EXAMPLE
+# ============================================
+
+# With kills-per-tier: 50
+# - 0-49 kills: Tier 1 (normal)
+# - 50-99 kills: Tier 2 (minor buffs)
+# - 100-149 kills: Tier 3 (abilities unlock)
+# - 150+ kills: Tier 4 (elite variant)
+
+# ============================================
+# RECOMMENDED STARTING VALUES
+# ============================================
+
+recommended:
+  evolution:
+    kills-per-tier: 50
+    elite-mutation-chance: 0.05
+    max-tier: 4
+  
+  resistance:
+    tier-2: 15
+    tier-3: 30
+    tier-4: 50
+  
+  elite:
+    health-multiplier: 2.0
+    damage-multiplier: 1.5
+    exp-multiplier: 3.0
+
+# ============================================
+# Author: MathTeacher
+# Plugin: DNAMobs v1.0.0
+# ============================================

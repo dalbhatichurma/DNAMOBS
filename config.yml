@@ -1,0 +1,202 @@
+# DNAMobs Configuration
+# Author: MathTeacher
+# Dynamic Mob Evolution System
+
+# General Settings
+general:
+  enabled: true
+  debug: false
+  # Tracking mode: GLOBAL, WORLD, PLAYER
+  tracking-mode: GLOBAL
+  # Save interval in ticks (20 ticks = 1 second)
+  save-interval: 6000
+
+# Storage Settings
+storage:
+  type: YAML # YAML, SQLITE, MYSQL
+  mysql:
+    host: localhost
+    port: 3306
+    database: dnamobs
+    username: root
+    password: password
+    use-ssl: false
+
+# Evolution System
+evolution:
+  enabled: true
+  # How many kills needed to evolve to next tier
+  kills-per-tier: 50
+  # Evolution speed multiplier
+  speed-multiplier: 1.0
+  # Maximum tier (1-4)
+  max-tier: 4
+  # Chance for elite mutation (0.0-1.0)
+  elite-mutation-chance: 0.05
+  # Reset evolution data on server restart
+  reset-on-restart: false
+
+# Damage Type Tracking
+damage-tracking:
+  melee: true
+  ranged: true
+  fire: true
+  explosion: true
+  magic: true
+  environmental: true
+  # Minimum damage to count
+  minimum-damage: 1.0
+
+# Resistance Evolution
+resistance:
+  enabled: true
+  # Resistance gained per tier (percentage)
+  tier-1: 0
+  tier-2: 15
+  tier-3: 30
+  tier-4: 50
+  # Specific resistance types
+  melee-resistance: true
+  ranged-resistance: true
+  fire-resistance: true
+  explosion-resistance: true
+
+# Mob Specific Settings
+mobs:
+  zombie:
+    enabled: true
+    evolution-enabled: true
+    # Tier 2 abilities
+    tier-2:
+      speed-boost: 0.1
+      health-boost: 5.0
+    # Tier 3 abilities
+    tier-3:
+      break-blocks: true
+      speed-boost: 0.2
+      health-boost: 10.0
+    # Tier 4 abilities
+    tier-4:
+      break-blocks: true
+      avoid-traps: true
+      speed-boost: 0.3
+      health-boost: 20.0
+      damage-boost: 2.0
+  
+  skeleton:
+    enabled: true
+    evolution-enabled: true
+    tier-2:
+      accuracy-boost: 0.1
+      speed-boost: 0.1
+      health-boost: 3.0
+    tier-3:
+      strafe-enabled: true
+      accuracy-boost: 0.2
+      speed-boost: 0.2
+      health-boost: 6.0
+    tier-4:
+      strafe-enabled: true
+      predict-movement: true
+      accuracy-boost: 0.3
+      speed-boost: 0.3
+      health-boost: 12.0
+      damage-boost: 1.5
+  
+  creeper:
+    enabled: true
+    evolution-enabled: true
+    tier-2:
+      explosion-delay: 0.5
+      speed-boost: 0.1
+      health-boost: 3.0
+    tier-3:
+      fake-detonation: true
+      explosion-delay: 1.0
+      speed-boost: 0.2
+      health-boost: 6.0
+    tier-4:
+      fake-detonation: true
+      explosion-delay: 1.5
+      speed-boost: 0.3
+      health-boost: 12.0
+      explosion-power: 1.5
+  
+  spider:
+    enabled: true
+    evolution-enabled: true
+    tier-2:
+      speed-boost: 0.15
+      health-boost: 4.0
+    tier-3:
+      web-trap: true
+      speed-boost: 0.25
+      health-boost: 8.0
+    tier-4:
+      web-trap: true
+      poison-attack: true
+      speed-boost: 0.35
+      health-boost: 16.0
+  
+  enderman:
+    enabled: true
+    evolution-enabled: true
+    tier-2:
+      teleport-frequency: 0.1
+      health-boost: 10.0
+    tier-3:
+      teleport-frequency: 0.2
+      dodge-projectiles: true
+      health-boost: 20.0
+    tier-4:
+      teleport-frequency: 0.3
+      dodge-projectiles: true
+      health-boost: 40.0
+      damage-boost: 3.0
+
+# Elite Mutations
+elite:
+  enabled: true
+  # Custom name format
+  name-format: "&c&l[ELITE] &6%mob%"
+  # Particle effects
+  particles:
+    enabled: true
+    type: FLAME # FLAME, SOUL_FIRE_FLAME, DRAGON_BREATH, etc.
+    count: 3
+  # Stat multipliers for elite mobs
+  health-multiplier: 2.0
+  damage-multiplier: 1.5
+  speed-multiplier: 1.3
+  # Special abilities
+  abilities:
+    regeneration: true
+    resistance: true
+    fire-resistance: true
+  # Rewards
+  rewards:
+    exp-multiplier: 3.0
+    rare-drops: true
+
+# Performance Settings
+performance:
+  # Use async data saving
+  async-saving: true
+  # Maximum mobs to track per chunk
+  max-tracked-per-chunk: 50
+  # Cache size for DNA profiles
+  cache-size: 1000
+  # Update interval for mob abilities (ticks)
+  ability-update-interval: 20
+
+# Messages
+messages:
+  prefix: "&8[&bDNA&3Mobs&8] &7"
+  reload-success: "&aConfiguration reloaded successfully!"
+  reset-success: "&aEvolution data has been reset!"
+  toggle-enabled: "&aEvolution system enabled!"
+  toggle-disabled: "&cEvolution system disabled!"
+  no-permission: "&cYou don't have permission to use this command!"
+  elite-spawn: "&6&lAn elite %mob% has appeared!"
+  stats-header: "&8&m----------&r &bEvolution Stats &8&m----------"
+  stats-format: "&7%mob%: &eTier %tier% &8(&7%kills% kills&8)"

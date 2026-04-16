@@ -1,0 +1,40 @@
+name: DNAMobs
+version: '${project.version}'
+main: com.dnamobs.DNAMobs
+api-version: '1.17'
+author: MathTeacher
+description: Dynamic mob evolution system based on player behavior
+website: https://github.com/MathTeacher/DNAMobs
+
+commands:
+  dna:
+    description: Main DNAMobs command
+    usage: /dna <reload|stats|reset|toggle>
+    permission: dnamobs.use
+    aliases: [dnamobs, evolution]
+
+permissions:
+  dnamobs.admin:
+    description: Full admin access to DNAMobs
+    default: op
+    children:
+      dnamobs.use: true
+      dnamobs.view: true
+      dnamobs.reload: true
+      dnamobs.reset: true
+      dnamobs.toggle: true
+  dnamobs.use:
+    description: Basic DNAMobs usage
+    default: true
+  dnamobs.view:
+    description: View evolution stats
+    default: true
+  dnamobs.reload:
+    description: Reload plugin configuration
+    default: op
+  dnamobs.reset:
+    description: Reset DNA data
+    default: op
+  dnamobs.toggle:
+    description: Toggle evolution system
+    default: op
